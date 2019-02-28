@@ -10,7 +10,7 @@ Engine::Engine()
 
 	m_Window.create(VideoMode(resolution.x, resolution.y),
 		"Thomas was late",
-		Style::Resize);
+		Style::Fullscreen);
 
 	// Initialize the full screen view
 	m_MainView.setSize(resolution);
@@ -36,6 +36,12 @@ Engine::Engine()
 	// Associate the sprite with the texture
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 	
+	// Load the texture for the background vertex array
+	m_TextureTiles = TextureHolder::GetTexture(
+		"graphics/tiles_sheet.png");
+	
+	// Initialize the particle system
+	m_PS.init(1000);
 }
 
 void Engine::run()
